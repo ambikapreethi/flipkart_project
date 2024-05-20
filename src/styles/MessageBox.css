@@ -1,0 +1,27 @@
+.message_box
+{
+    border:2px solid grey;
+    width:300px;
+    height: 200px;
+    position: relative;
+    top:-300px;
+    right: 350px;
+    background-color:white;
+    
+}
+
+.message_box p{
+    margin-left: 40px;
+    margin-top:40px;
+    color:red;
+    font-size: 26px;
+}
+
+.message_box button
+{
+    margin-left: 100px;
+    margin-top: 30px;
+    background-color: rgb(216, 159, 159);
+    color: white;
+    width: 100px;
+}

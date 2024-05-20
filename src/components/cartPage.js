@@ -41,7 +41,7 @@ const CartPage=({ items, removeFromCart })=>
                                 <p className="grid_title">{item.title}</p>
                             <p className="grid_image"><img src={item.image} alt={item.title} style={{ width: '80px', height: '80px' }}/></p>
                             <p className="grid_price">Price: ${item.price}</p>
-                            <p><button className="grid_buy">Buy Now</button></p>
+                            <Link to="/billing"><p><button className="grid_buy">Buy Now</button></p></Link>
                             <p> <button className ="grid_removebtn" onClick={() => removeFromCart(item.id)}>Remove</button></p>
                    </div>
                          
@@ -64,7 +64,7 @@ const CartPage=({ items, removeFromCart })=>
                             <td><img src={item.image} alt={item.title} style={{ width: '50px', height: '60px' }}/></td>
                             <td className="title">{item.title}</td>
                             <td className="price">$ {item.price}</td>
-                            <td><button className="buy">Buy Now</button></td>
+                            <td><Link to="/billing"><button className="buy">Buy Now</button></Link></td>
                             <td> <div> <button className ="removebtn" onClick={() => removeFromCart(item.id)}>Remove</button></div>
                    </td>
                          </tr>

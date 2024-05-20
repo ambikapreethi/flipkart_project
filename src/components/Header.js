@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,faShoppingCart,faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import "../styles/home.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 export function Header()
 {
+    const count=useSelector(state=>state.cart.items.length);
     return(
 
 <div className="container">
@@ -18,7 +20,7 @@ export function Header()
                 </div>
                 <div>Become a seller</div>
                 <div>More  <FontAwesomeIcon icon={faAngleDown} /></div>
-                <div> <FontAwesomeIcon icon={faShoppingCart} />  Cart</div>
+                <div> <FontAwesomeIcon icon={faShoppingCart} />  Cart: <span style={{color:"yellow"}}>{count}</span></div>
                 </div>
             <div className="menu">
                 <nav>

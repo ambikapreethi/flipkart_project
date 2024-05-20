@@ -46,7 +46,8 @@ import { connect } from "react-redux";
                             <p className="title">{item.title}</p>
                             <img src={item.image} alt="file not found" width="90px" height="90px"/>
                             <p><span>Price:</span> ${item.price}</p>
-                           <p> <Link to="/cart"><button className="cart" onClick={()=>{handleAddToCart(item)}}>Add to Cart</button></Link><button className="buy">Buy Now</button></p>
+                           <p> <Link to="/cart"><button className="cart" onClick={()=>{handleAddToCart(item)}}>Add to Cart</button></Link>
+                           <Link to="/billing"><button className="buy">Buy Now</button></Link></p>
                         </div>
                     ))}
                 </ol>
