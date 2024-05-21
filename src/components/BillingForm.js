@@ -79,7 +79,7 @@ const handleSubmit=(e)=>
                 </tr>
                 <tr>
                     <td><label>Expiration Date:</label></td>
-                    <td><input type="date" name="ExpDate" value={billing.ExpDate} onChange={(e)=>handleChange(e)} required/></td>
+                    <td><input type="date" name="ExpDate" value={billing.ExpDate} onChange={(e)=>handleChange(e)} required/><span>*</span></td>
                 </tr>
                 
             </table>

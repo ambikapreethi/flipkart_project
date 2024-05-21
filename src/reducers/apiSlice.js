@@ -1,7 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk,current } from "@reduxjs/toolkit";
 // import axios from "axios";
 const initialState={
-items: [],
+products: [],
+filteredProducts: [],
 status: "idle",
 error: null
 }
@@ -21,23 +22,36 @@ error: null
 )
 
 const apiSlice = createSlice({
-    name: "api",
+    name: "products",
    initialState,
-  
-    reducers: {},
-    extraReducers: (builder) => {
+   reducers: {
+    filterByCategory: (state, action) => {
+        const category = action.payload;
+        state.filteredProducts = state.products.filter(product=>product.category===category);
+        
+            },
+    filterByRating: (state, action) => {
+        const rating = action.payload;
+        state.filteredProducts = state.products.filter(product=>product.rating.rate >= rating);
+        console.log()
+    } },
+   extraReducers: (builder) => {
         builder
             .addCase(fetchItems.pending, (state) => {
                 state.status = "loading";
             })
             .addCase(fetchItems.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                state.items = action.payload;
+                state.products = action.payload;
+            
             })
+
             .addCase(fetchItems.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             })
     }
+    
 })
 export default apiSlice.reducer;
+export const { filterByCategory,filterByRating }=apiSlice.actions;

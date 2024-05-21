@@ -4,7 +4,7 @@ import cartSlice from "./cartSlice";
 import BillingSlice from "./BillingSlice";
 
 const rootReducer=combineReducers({
-    api:apiSlice,
+    products:apiSlice,
     cart:cartSlice,
     billing:BillingSlice
 })
