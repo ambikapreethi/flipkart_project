@@ -33,7 +33,7 @@ const apiSlice = createSlice({
     filterByRating: (state, action) => {
         const rating = action.payload;
         state.filteredProducts = state.products.filter(product=>product.rating.rate >= rating);
-        console.log()
+       
     } },
    extraReducers: (builder) => {
         builder
