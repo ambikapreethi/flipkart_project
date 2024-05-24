@@ -22,16 +22,7 @@ export function Header()
                 <div>More  </div>
                 <div> <FontAwesomeIcon icon={faShoppingCart} />  Cart: <span style={{color:"yellow"}}>{count}</span></div>
                 </div>
-            <div className="menu">
-                <nav>
-                    <Link to="/shop">Shop </Link>
-                    <Link to="/TvItems">TVs & Appliances </Link>
-                    <Link to="/menItems">Men </Link>
-                    <Link to="/womenItems">Women </Link>
-                    <Link to="/jewels">Jewels </Link>
-                    
-                </nav>
-            </div>
+    
             
         </div>
     )

@@ -31,17 +31,42 @@ nav a{
 }
 .menu
 {
-    width:100%;
+   width:170px;
     height: 50px;
+    margin-left: 20px;
 }
 .head
-{display: flex;
-    margin-left: 50px;
-}
-.dropdown
 {
-    width:170px;
-    height: 30px;
-    font-size: 17px;
+    display: flex;
+    margin-left: 20px;
+    margin-top:1px
 }
-
+.menu p{
+    font-size: 20px;
+}
+.range
+{
+    margin-top: 230px;
+    
+}
+.ratingheader,.cateHeader
+{
+    font-size: 19px;
+    color:black;
+     
+}
+.pageBtn
+{
+    margin-left: 530px;
+    margin-top: -184px;
+}
+.pageBtn button
+{
+    color:red;
+    background-color:blanchedalmond;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.pageBtn span{
+    margin-left: 20px;
+}

@@ -11,7 +11,8 @@ const initialState={
     Payment:"",
     CardNo:"",
     SecCode:"",
-    ExpDate:""
+    ExpDate:"",
+    FormData:[]
 }
 
 
@@ -26,8 +27,14 @@ const BillingSlice=createSlice({
         },
         clearBillingForm(){
             return initialState;
-        }}})
+        },
+        submitForm(state,action)
+        {
+            state.FormData.push(action.payload);
+        }
+    }
+    })
   
 
 export default BillingSlice.reducer;
-export const {updateBillingField,clearBillingForm}=BillingSlice.actions;
+export const {updateBillingField,clearBillingForm,submitForm}=BillingSlice.actions;

@@ -1,8 +1,9 @@
-import { createSlice, createAsyncThunk,current } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk,current, createSerializableStateInvariantMiddleware } from "@reduxjs/toolkit";
 // import axios from "axios";
 const initialState={
 products: [],
 filteredProducts: [],
+rating:0,
 status: "idle",
 error: null
 }
@@ -15,8 +16,7 @@ error: null
             }
            return response.json();
         } catch (error) {
-            throw error;
-        }
+            throw error;        }
 
     }
 )
@@ -25,16 +25,13 @@ const apiSlice = createSlice({
     name: "products",
    initialState,
    reducers: {
-    filterByCategory: (state, action) => {
-        const category = action.payload;
-        state.filteredProducts = state.products.filter(product=>product.category===category);
-        
-            },
-    filterByRating: (state, action) => {
-        const rating = action.payload;
-        state.filteredProducts = state.products.filter(product=>product.rating.rate >= rating);
-        console.log()
-    } },
+    filterProductsByPrice(state, action) {
+        const { minPrice, maxPrice } = action.payload;
+        state.filteredProducts = state.products.filter(product => 
+          product.price >= minPrice && product.price <= maxPrice
+        );
+      },
+   },
    extraReducers: (builder) => {
         builder
             .addCase(fetchItems.pending, (state) => {
@@ -49,9 +46,10 @@ const apiSlice = createSlice({
             .addCase(fetchItems.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
-            })
+    } )       
     }
-    
 })
+    
+
 export default apiSlice.reducer;
-export const { filterByCategory,filterByRating }=apiSlice.actions;
+export const { filterProductsByPrice }=apiSlice.actions;

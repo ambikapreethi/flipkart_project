@@ -8,11 +8,14 @@ import Jewels from './components/jewels';
 import WomenItems from './components/womenItems';
 import CartPage from './components/cartPage';
 import BillingForm from './components/BillingForm';
+import { Header } from './components/Header';
 
 
 function App() {
   return (
+    
       <BrowserRouter>
+      <Header/>
       <Routes>
         <Route path='/' element={<Shop/>}/>
         <Route path='shop' element={<Shop/>}/>
@@ -22,6 +25,7 @@ function App() {
         <Route path='TvItems' element={<TvItems/>}/>
         <Route path='cart' element={<CartPage/>}/>
         <Route path='billing' element={<BillingForm/>}/>
+     
         
       </Routes>
       </BrowserRouter>

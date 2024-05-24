@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "../styles/BillingForm.css";
 import { useSelector,useDispatch } from "react-redux";
-import BillingSlice, { updateBillingField,clearBillingForm  } from "../reducers/BillingSlice";
+import BillingSlice, { updateBillingField,clearBillingForm ,submitForm } from "../reducers/BillingSlice";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MessageBox from "./MessageBox";
 import Shop from "./shop";
 import { useNavigate } from "react-router-dom";
+
 function BillingForm()
 {
     const[showMessageBox,setshowMessageBox]=useState(false);
@@ -15,6 +16,17 @@ function BillingForm()
     const count=useSelector(state=>state.cart.items.length);
     const totalPrice=useSelector(state=>state.cart.totalPrice);
     const navigate=useNavigate();
+    const[firstName,setFirstName]=useState("");
+    const[lastName,setLastName]=useState("");
+    const[Email,setEmail]=useState("");
+    const[Address,setAddress]=useState("");
+    const[City,setCity]=useState("");
+    const[State,setState]=useState("");
+    const[Zip,setZip]=useState("");
+    const[Payment,setPayment]=useState("");
+    const[CardNo,setCardNo]=useState("");
+    const[SecCode,setSecCode]=useState("");
+    const[ExpDate,setExpDate]=useState("");
 const handleChange=(e)=>
 {
  const{name,value} =e.target;
@@ -23,9 +35,8 @@ const handleChange=(e)=>
 }
 const handleSubmit=(e)=>
     {
-        // console.log(billing);
         e.preventDefault();
-        setshowMessageBox(true);
+        // setshowMessageBox(true);
     }
     const handleMessageBoxClose = () => {
         navigate("/shop");
@@ -92,11 +103,12 @@ const handleSubmit=(e)=>
             <input className="cash" type="radio"/>
                 <label className="delivery">  Cash on Delivery</label><br/>
                 <button className="submitBtn" type="submit">Submit</button>
-                {showMessageBox && (
+                {/* {showMessageBox && (
                 <MessageBox onClose={handleMessageBoxClose}>
                     Successfully Ordered!
-                </MessageBox>
-      )}
+                </MessageBox> */}
+      {/* )} */}
+
             </div>
             
         </form>
@@ -108,4 +120,4 @@ const mapStateToProps = state => ({
     billing: state.billing.billing,
   });
 
-  export default connect(mapStateToProps, { updateBillingField })(BillingForm);
+  export default connect(mapStateToProps, { updateBillingField,submitForm })(BillingForm);
