@@ -18,13 +18,11 @@ import { setCurrentPage } from "../reducers/paginationSlice";
         const products=useSelector(state=>state.products.products);
         const status=useSelector(state=>state.products.status);
         const error=useSelector(state=>state.products.error);
-        const category=useSelector(state=>state.products.category);
-        const rating=useSelector(state=>state.products.rating);
         const [selectedOption, setSelectedOption] = useState("");
         const currentPage=useSelector(state=>state.pagination.currentPage);
         const itemsPerPage = useSelector(state => state.pagination.itemsPerPage);
         const totalItems=useSelector(state=>state.products.products.length);
-
+        const filteredProducts=useSelector(state=>state.products.filteredProducts);
         const totalPages = Math.ceil(totalItems / itemsPerPage);
     
         useEffect(()=>
@@ -65,7 +63,7 @@ import { setCurrentPage } from "../reducers/paginationSlice";
                 </div>
                 <div>
               
-                     {products.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(item => (
+                     {filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(item => (
                        <div key={item.id} style={{ width:"270px",height:"460px",float:"left", margin: "10px", border: "1px solid #ccc", padding: "5px" }}>
                        <p className="title">{item.title}</p>
                        <img src={item.image} alt="file not found" width="90px" height="90px"/>

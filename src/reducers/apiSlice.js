@@ -3,7 +3,6 @@ import { createSlice, createAsyncThunk,current, createSerializableStateInvariant
 const initialState={
 products: [],
 filteredProducts: [],
-rating:0,
 status: "idle",
 error: null
 }

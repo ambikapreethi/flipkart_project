@@ -17,8 +17,6 @@ import { fetchItems,filterProductsByPrice } from "../reducers/apiSlice";
         const products=useSelector(state=>state.products.products);
         const status=useSelector(state=>state.products.status);
         const error=useSelector(state=>state.products.error);
-        const category=useSelector(state=>state.products.category);
-        const rating=useSelector(state=>state.products.rating);
         const [selectedOption, setSelectedOption] = useState("");
         const currentPage=useSelector(state=>state.pagination.currentPage);
         const itemsPerPage = useSelector(state => state.pagination.itemsPerPage);
