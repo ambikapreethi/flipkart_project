@@ -25,15 +25,13 @@ const apiSlice = createSlice({
     name: "products",
    initialState,
    reducers: {
-    filterByCategory: (state, action) => {
-        const category = action.payload;
-        state.filteredProducts = state.products.filter(product=>product.category===category);
-        
-            },
-    filterByRating: (state, action) => {
-        const rating = action.payload;
-        state.filteredProducts = state.products.filter(product=>product.rating.rate >= rating);
-        console.log()
+
+    filterProductsByPrice: (state, action) => {
+        const { minPrice, maxPrice } = action.payload;
+        state.filteredProducts = state.products.filter(product => (
+            product.price >= minPrice && product.price <= maxPrice
+          ));
+       
     } },
    extraReducers: (builder) => {
         builder

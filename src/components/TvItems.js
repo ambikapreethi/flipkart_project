@@ -11,7 +11,7 @@ import { Rating } from "@mui/material";
 import { setCurrentPage } from "../reducers/paginationSlice";
 import SideBar from "./SideBar";
 import { fetchItems,filterProductsByPrice } from "../reducers/apiSlice";
- const TvItems =({addToCart,updateTotalPrice,filterByCategory})=>
+ const TvItems =({addToCart,updateTotalPrice,filterProductsByPrice})=>
     {
         const dispatch=useDispatch();
         const products=useSelector(state=>state.products.products);
@@ -37,8 +37,8 @@ import { fetchItems,filterProductsByPrice } from "../reducers/apiSlice";
            
           };
           useEffect(() => {
-            // Filter products based on price range whenever currentPage changes
-            dispatch(filterProductsByPrice({ minPrice: 0, maxPrice: 1000 })); // Assuming full range for demonstration
+            
+            dispatch(filterProductsByPrice({ minPrice: 0, maxPrice: 1000 })); 
           }, [dispatch]);
 
         useEffect(()=>
@@ -65,7 +65,7 @@ import { fetchItems,filterProductsByPrice } from "../reducers/apiSlice";
                     <SideBar/>
                 </div>
                <div>
-                
+              
                      {filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(item => (
                        <div key={item.id} style={{ width:"270px",height:"460px",float:"left", margin: "10px", border: "1px solid #ccc", padding: "5px" }}>
                        <p className="title">{item.title}</p>
@@ -96,4 +96,4 @@ import { fetchItems,filterProductsByPrice } from "../reducers/apiSlice";
         products: state.products
       });
     
-      export  default connect(mapStateToProps, { addToCart,updateTotalPrice })(TvItems);
+      export  default connect(mapStateToProps, { addToCart,updateTotalPrice,filterProductsByPrice })(TvItems);

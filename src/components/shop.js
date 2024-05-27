@@ -12,13 +12,12 @@ import { Rating } from "@mui/material";
 import SideBar from "./SideBar";
 import { setCurrentPage } from "../reducers/paginationSlice";
 
- const Shop =({addToCart,updateTotalPrice})=>
+ const Shop =({addToCart,updateTotalPrice,filterProductsByPrice})=>
     {
         const dispatch=useDispatch();
         const products=useSelector(state=>state.products.products);
         const status=useSelector(state=>state.products.status);
         const error=useSelector(state=>state.products.error);
-        const filteredProducts = useSelector(state => state.products.filteredProducts);
         const category=useSelector(state=>state.products.category);
         const rating=useSelector(state=>state.products.rating);
         const [selectedOption, setSelectedOption] = useState("");
@@ -31,11 +30,11 @@ import { setCurrentPage } from "../reducers/paginationSlice";
         useEffect(()=>
             {
                 dispatch(fetchItems());
-            },[dispatch])
+            },[dispatch]);
 
             useEffect(() => {
-                // Filter products based on price range whenever currentPage changes
-                dispatch(filterProductsByPrice({ minPrice: 0, maxPrice: 1000 })); // Assuming full range for demonstration
+                
+                dispatch(filterProductsByPrice({ minPrice: 0, maxPrice: 1000 })); 
               }, [dispatch]);
 
          const handleAddToCart = (product) => {
@@ -65,8 +64,8 @@ import { setCurrentPage } from "../reducers/paginationSlice";
                 
                 </div>
                 <div>
-                
-                     {filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(item => (
+              
+                     {products.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map(item => (
                        <div key={item.id} style={{ width:"270px",height:"460px",float:"left", margin: "10px", border: "1px solid #ccc", padding: "5px" }}>
                        <p className="title">{item.title}</p>
                        <img src={item.image} alt="file not found" width="90px" height="90px"/>
@@ -97,5 +96,5 @@ import { setCurrentPage } from "../reducers/paginationSlice";
         
       });
    
-      export  default connect(mapStateToProps, {addToCart,updateTotalPrice})(Shop);
+      export  default connect(mapStateToProps, {addToCart,updateTotalPrice,filterProductsByPrice})(Shop);
     

@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import Rating from '@mui/material/Rating';
 import SideBar from "./SideBar";
 import { setCurrentPage } from "../reducers/paginationSlice";
- const MenItems =({addToCart,updateTotalPrice})=>
+ const MenItems =({addToCart,updateTotalPrice,filterProductsByPrice})=>
     {
         const dispatch=useDispatch();
         const products=useSelector(state=>state.products.products);
@@ -43,8 +43,8 @@ import { setCurrentPage } from "../reducers/paginationSlice";
         },[dispatch])
 
         useEffect(() => {
-            // Filter products based on price range whenever currentPage changes
-            dispatch(filterProductsByPrice({ minPrice: 0, maxPrice: 1000 })); // Assuming full range for demonstration
+            
+            dispatch(filterProductsByPrice({ minPrice: 0, maxPrice: 1000 })); 
           }, [dispatch]);
 
         if(status==="loading")
@@ -97,4 +97,4 @@ import { setCurrentPage } from "../reducers/paginationSlice";
         products: state.products
       });
     
-      export  default connect(mapStateToProps, { addToCart,updateTotalPrice })(MenItems);
+      export  default connect(mapStateToProps, { addToCart,updateTotalPrice,filterProductsByPrice })(MenItems);

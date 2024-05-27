@@ -36,7 +36,7 @@ const handleChange=(e)=>
 const handleSubmit=(e)=>
     {
         e.preventDefault();
-        // setshowMessageBox(true);
+        setshowMessageBox(true);
     }
     const handleMessageBoxClose = () => {
         navigate("/shop");
@@ -103,12 +103,12 @@ const handleSubmit=(e)=>
             <input className="cash" type="radio"/>
                 <label className="delivery">  Cash on Delivery</label><br/>
                 <button className="submitBtn" type="submit">Submit</button>
-                {/* {showMessageBox && (
+                {showMessageBox && (
                 <MessageBox onClose={handleMessageBoxClose}>
                     Successfully Ordered!
-                </MessageBox> */}
-      {/* )} */}
-
+                </MessageBox> 
+      
+                )}
             </div>
             
         </form>
